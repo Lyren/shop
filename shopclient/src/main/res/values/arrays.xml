@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="shopState">
+        <item >营业中</item>
+        <item >休息</item>
+    </string-array>
+    
+</resources>

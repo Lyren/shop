@@ -1,9 +1,11 @@
-package org.tmp.shopclient.shopclient;
+package org.tmp.shopclient.views;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import org.tmp.shopclient.R;
 
 
 public class MainActivity extends Activity {

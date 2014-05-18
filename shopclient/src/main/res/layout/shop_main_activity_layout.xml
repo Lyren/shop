@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <Button 
+        android:id="@+id/btn_order_managemnet"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/orderManagement"
+        />
+    <Button 
+        android:id="@+id/btn_dish_management"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dishManagement"
+        />
+    <Button 
+        android:id="@+id/btn_shop_info"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/shopInfo"
+        />
+    <Button 
+        android:id="@+id/btn_sales_acount"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/salesAcount"
+        />
+    <Spinner 
+        android:id="@+id/s_state"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        
+        />
+
+</LinearLayout>
