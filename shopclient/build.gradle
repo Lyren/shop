@@ -19,6 +19,7 @@ android {
 }
 
 dependencies {
+    compile 'com.android.support:support-v4:+'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('F:/android studio workspace/shop/libs/guice-3.0-no_aop.jar')
     compile files('F:/android studio workspace/shop/libs/javax.inject-1.jar')

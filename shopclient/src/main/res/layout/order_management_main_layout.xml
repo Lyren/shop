@@ -9,25 +9,43 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/btn_dealing"
+        <TextView
+            android:id="@+id/tv_dealing"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/dealing" />
+            android:text="@string/dealing"
+            android:tag="0"
+            android:gravity="center"
+            android:textSize="28sp"
+            android:padding="8dp" />
 
-        <Button
-            android:id="@+id/btn_dealed"
+        <TextView
+            android:id="@+id/tv_dealed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:tag="1"
             android:layout_weight="1"
-            android:text="@string/dealed" />
+            android:text="@string/dealed"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textSize="28sp"
+            android:padding="8dp" />
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/fragment_orders"
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="5dp"
+        android:id="@+id/img_cursor"
+        android:scaleType="matrix"
+        android:src="@drawable/cursor" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/order_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </RelativeLayout>
+        android:layout_height="match_parent"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation"/>
+
+
 
 </LinearLayout>
