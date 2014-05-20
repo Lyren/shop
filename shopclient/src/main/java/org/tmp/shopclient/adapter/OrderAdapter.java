@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class OrderAdapter extends BaseAdapter{
 
-    private class ViewHolder{
+    private static class ViewHolder{
         TextView address ;
         TextView price ;
         TextView phone;
@@ -87,7 +87,7 @@ public class OrderAdapter extends BaseAdapter{
         }
         return view;
     }
-    class LvBtnListener implements View.OnClickListener{
+    class LvBtnListener implements View.OnClickListener {
 
         private int position ;
         LvBtnListener(int i){

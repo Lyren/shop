@@ -52,7 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="完成"
-            android:id="@+id/btn_order_finish" />
+            android:id="@+id/btn_order_finish"
+            android:focusable="false"/>
 
     </LinearLayout>
 

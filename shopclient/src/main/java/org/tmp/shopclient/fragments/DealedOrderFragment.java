@@ -22,6 +22,7 @@ public class DealedOrderFragment extends Fragment {
         Bundle args = new Bundle();
         args.putString(ARG_PARAM, param);
         fragment.setArguments(args);
+
         return fragment;
     }
     public DealedOrderFragment() {

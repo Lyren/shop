@@ -7,8 +7,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="F:\android studio workspace\shop" />
-            <option value="F:\android studio workspace\shop\shopclient" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/shopclient" />
           </set>
         </option>
       </GradleProjectSettings>
