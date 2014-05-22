@@ -1,4 +1,4 @@
-package org.tmp.shopclient.adapter;
+package org.tmp.shopclient.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

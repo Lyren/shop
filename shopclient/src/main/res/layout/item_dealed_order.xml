@@ -20,7 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/tv_order_time"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:text="￥25"
         android:textSize="18sp" />
 
@@ -28,7 +29,7 @@
         android:id="@+id/tv_order_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tv_order_date"
+        android:layout_below="@+id/tv_order_address"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:text="18888888888"
@@ -41,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/btn_order_finish"
+        android:layout_below="@+id/tv_order_phone"
         android:text="2014/5/5"
         android:textSize="18sp" />
 
@@ -49,23 +50,21 @@
         android:id="@+id/tv_order_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_order_phone"
-        android:layout_toRightOf="@+id/tv_order_address"
         android:text="10:00 下单"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_below="@+id/tv_order_phone"
+        android:layout_toRightOf="@+id/tv_order_phone" />
 
     <Button
         android:id="@+id/btn_order_finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/tv_order_address"
-        android:layout_marginRight="38dp"
-        android:layout_marginTop="36dp"
         android:focusable="false"
         android:text="完成"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_below="@+id/tv_order_price"
+        android:layout_alignRight="@+id/tv_order_price"
+        android:layout_alignEnd="@+id/tv_order_price" />
 
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package org.tmp.shopclient.fragments.dummy;
+package org.tmp.shopclient.ui.fragments.dummy;
 
 import java.util.ArrayList;
 import java.util.HashMap;

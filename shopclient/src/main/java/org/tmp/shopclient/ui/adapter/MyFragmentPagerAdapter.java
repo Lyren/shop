@@ -1,4 +1,4 @@
-package org.tmp.shopclient.adapter;
+package org.tmp.shopclient.ui.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

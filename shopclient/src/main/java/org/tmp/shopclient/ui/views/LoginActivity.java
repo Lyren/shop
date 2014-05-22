@@ -1,4 +1,4 @@
-package org.tmp.shopclient.views;
+package org.tmp.shopclient.ui.views;
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;

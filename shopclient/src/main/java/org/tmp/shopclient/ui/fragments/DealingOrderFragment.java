@@ -1,15 +1,16 @@
-package org.tmp.shopclient.views;
+package org.tmp.shopclient.ui.fragments;
 
-import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.text.format.DateUtils;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 
 import org.tmp.shopclient.R;
-import org.tmp.shopclient.adapter.OrderAdapter;
+import org.tmp.shopclient.ui.adapter.OrderAdapter;
 import org.tmp.shopclient.pulltorefresh.extras.SoundPullEventListener;
 import org.tmp.shopclient.pulltorefresh.library.PullToRefreshBase;
 import org.tmp.shopclient.pulltorefresh.library.PullToRefreshListView;
@@ -19,24 +20,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class MainActivity extends Activity {
-
+public class DealingOrderFragment extends Fragment {
 
     private PullToRefreshListView mPullRefreshListView;
     private OrderAdapter adapter;
     private ArrayList<Map<String, Object>> infoList;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public DealingOrderFragment() {
+        // Required empty public constructor
+    }
 
-        mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.pull_refresh_list);
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_dealing_order, container, false);
+
+        mPullRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
+
         mPullRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
         // Set a listener to be invoked when the list should be refreshed.
         mPullRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                String label = DateUtils.formatDateTime(getApplicationContext(), System.currentTimeMillis(),
+                String label = DateUtils.formatDateTime(getActivity().getApplicationContext(), System.currentTimeMillis(),
                         DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
 
                 // Update the LastUpdatedLabel
@@ -60,15 +66,13 @@ public class MainActivity extends Activity {
         // Need to use the Actual ListView when registering for Context Menu
         registerForContextMenu(actualListView);
 
-        //mListItems = new LinkedList<String>();
-        //mListItems.addAll(Arrays.asList(mStrings));
         initData();
-        adapter = new OrderAdapter(MainActivity.this, infoList, R.layout.item_dealed_order, new String[]{"address", "price", "phone", "date", "time"}, new int[]{R.id.tv_order_address, R.id.tv_order_price, R.id.tv_order_phone, R.id.tv_order_date, R.id.tv_order_time,R.id.btn_order_finish});
+        adapter = new OrderAdapter(getActivity(), infoList, R.layout.item_dealed_order, new String[]{"address", "price", "phone", "date", "time"}, new int[]{R.id.tv_order_address, R.id.tv_order_price, R.id.tv_order_phone, R.id.tv_order_date, R.id.tv_order_time,R.id.btn_order_finish});
 
         /**
          * Add Sound Event Listener
          */
-        SoundPullEventListener<ListView> soundListener = new SoundPullEventListener<ListView>(this);
+        SoundPullEventListener<ListView> soundListener = new SoundPullEventListener<ListView>(getActivity());
         soundListener.addSoundEvent(PullToRefreshBase.State.PULL_TO_REFRESH, R.raw.pull_event);
         soundListener.addSoundEvent(PullToRefreshBase.State.RESET, R.raw.reset_sound);
         soundListener.addSoundEvent(PullToRefreshBase.State.REFRESHING, R.raw.refreshing_sound);
@@ -77,6 +81,7 @@ public class MainActivity extends Activity {
         // You can also just use setListAdapter(mAdapter) or
         // mPullRefreshListView.setAdapter(mAdapter)
         actualListView.setAdapter(adapter);
+        return view;
     }
 
     private class GetDataTask extends AsyncTask<Void, Void, String[]> {
@@ -95,11 +100,11 @@ public class MainActivity extends Activity {
         protected void onPostExecute(String[] result) {
 
             Map<String, Object> map = new HashMap<String, Object>();
-            map.put("address", "address" );
-            map.put("price", "price" );
-            map.put("phone", "phone" );
-            map.put("date", "date" );
-            map.put("time", "time" );
+            map.put("address", "大连理工大学软件学院  小三炮" );
+            map.put("price", "￥20" );
+            map.put("phone", "18888888888" );
+            map.put("date", "2014/5/5" );
+            map.put("time", "17:00 下单" );
             infoList.add(map);
             adapter.notifyDataSetChanged();
 
@@ -110,35 +115,18 @@ public class MainActivity extends Activity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
     private void initData() {
         infoList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < 10; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
-            map.put("address", "address" + i);
-            map.put("price", "price" + i);
-            map.put("phone", "phone" + i);
-            map.put("date", "date" + i);
-            map.put("time", "time" + i);
+            map.put("address", "大连理工大学软件学院  小三炮"+i );
+            map.put("price", "￥20" +i);
+            map.put("phone", "18888888888" +i);
+            map.put("date", "2014/5/5" +i);
+            map.put("time", "17:00 下单" +i);
             infoList.add(map);
         }
     }
+
+
 }

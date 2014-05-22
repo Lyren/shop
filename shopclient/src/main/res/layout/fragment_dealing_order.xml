@@ -7,7 +7,7 @@ android:paddingLeft="@dimen/activity_horizontal_margin"
 android:paddingRight="@dimen/activity_horizontal_margin"
 android:paddingTop="@dimen/activity_vertical_margin"
 android:paddingBottom="@dimen/activity_vertical_margin"
-tools:context="org.tmp.shopclient.views.MainActivity">
+tools:context="org.tmp.shopclient.ui.views.MainActivity">
 
     <org.tmp.shopclient.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/pull_refresh_list"
@@ -15,7 +15,7 @@ tools:context="org.tmp.shopclient.views.MainActivity">
         android:layout_height="fill_parent"
         android:cacheColorHint="#00000000"
         android:divider="#19000000"
-        android:dividerHeight="4dp"
+        android:dividerHeight="2dp"
         android:fadingEdge="none"
         android:fastScrollEnabled="false"
         android:footerDividersEnabled="false"

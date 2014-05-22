@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <LinearLayout
+        android:id="@+id/ll_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
@@ -33,19 +34,40 @@
             android:padding="8dp" />
     </LinearLayout>
 
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_title"
+        android:orientation="horizontal" >
     <ImageView
-        android:layout_width="150dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="5dp"
         android:id="@+id/img_cursor"
         android:scaleType="matrix"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:src="@drawable/cursor" />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:id="@+id/img_cursor2"
+            android:scaleType="matrix"
+            android:src="@drawable/cursor"
+            />
+
+    </LinearLayout>
     <android.support.v4.view.ViewPager
+
         android:id="@+id/order_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/ll_title"
         android:flipInterval="30"
         android:persistentDrawingCache="animation"/>
 
 
 
-</LinearLayout>
+</RelativeLayout>

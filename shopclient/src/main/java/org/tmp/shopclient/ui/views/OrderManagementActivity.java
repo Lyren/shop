@@ -1,9 +1,9 @@
-package org.tmp.shopclient.views;
+package org.tmp.shopclient.ui.views;
 
 import org.tmp.shopclient.R;
-import org.tmp.shopclient.adapter.MyFragmentPagerAdapter;
-import org.tmp.shopclient.fragments.DealedOrderFragment;
-import org.tmp.shopclient.fragments.DealingOrderFragment;
+import org.tmp.shopclient.ui.adapter.MyFragmentPagerAdapter;
+import org.tmp.shopclient.ui.fragments.DealedOrderFragment;
+import org.tmp.shopclient.ui.fragments.DealingOrderFragment;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -21,7 +21,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import roboguice.activity.RoboFragmentActivity;
 import roboguice.inject.InjectView;
@@ -66,7 +65,8 @@ public class OrderManagementActivity extends RoboFragmentActivity implements Vie
      * 初始化图片的位移像素
      */
     private void initCursor(){
-        bmpW = BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher).getWidth();
+        //bmpW = BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher).getWidth();
+        bmpW = cursor.getWidth();
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int screenW = dm.widthPixels;

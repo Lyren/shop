@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.tmp.shopclient.fragments.DealedOrderFragment">
+    tools:context="org.tmp.shopclient.ui.fragments.DealedOrderFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
