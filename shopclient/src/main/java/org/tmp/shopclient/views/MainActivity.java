@@ -6,12 +6,7 @@ import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.tmp.shopclient.R;
 import org.tmp.shopclient.adapter.OrderAdapter;
@@ -20,17 +15,11 @@ import org.tmp.shopclient.pulltorefresh.library.PullToRefreshBase;
 import org.tmp.shopclient.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
 
 public class MainActivity extends Activity {
-    static final int MENU_MANUAL_REFRESH = 0;
-    static final int MENU_DISABLE_SCROLL = 1;
-    static final int MENU_SET_MODE = 2;
-    static final int MENU_DEMO = 3;
 
 
     private PullToRefreshListView mPullRefreshListView;
