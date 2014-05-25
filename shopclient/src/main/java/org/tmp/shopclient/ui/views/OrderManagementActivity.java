@@ -71,6 +71,9 @@ public class OrderManagementActivity extends RoboFragmentActivity implements Vie
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int screenW = dm.widthPixels;
         offset = (screenW/2 - bmpW)/2;
+        System.out.println("bmpW-->"+ bmpW);
+        System.out.println("screenW-->"+ screenW);
+        System.out.println("offset-->"+ offset);
         //imgageview设置平移，使下划线平移到初始位置（平移一个offset）
         Matrix matrix = new Matrix();
         matrix.postTranslate(offset, 0);

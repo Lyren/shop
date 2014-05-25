@@ -6,6 +6,7 @@ import roboguice.inject.InjectView;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -50,7 +51,9 @@ public class LoginActivity extends RoboActivity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_login:
-			Toast.makeText(LoginActivity.this, "login", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoginActivity.this,ShopMainActivity.class);
+            startActivity(intent);
+			//Toast.makeText(LoginActivity.this, "login", Toast.LENGTH_SHORT).show();
 			break;
 
 		default:

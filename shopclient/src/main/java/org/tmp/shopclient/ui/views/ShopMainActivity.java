@@ -1,6 +1,7 @@
 package org.tmp.shopclient.ui.views;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -78,7 +79,8 @@ public class ShopMainActivity extends RoboActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.btn_order_managemnet:
-
+            Intent intent = new Intent(ShopMainActivity.this,OrderManagementActivity.class);
+            startActivity(intent);
 			break;
 		case R.id.btn_dish_management:
 

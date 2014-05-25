@@ -11,6 +11,7 @@ import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
 
 import org.apache.http.Header;
+import org.tmp.shopclient.utils.Constant;
 
 public class HttpConnection {
 
@@ -45,7 +46,7 @@ public class HttpConnection {
                 super.onSuccess(statusCode, headers, responseBody);
                 System.out.println("statusCode--->"+statusCode);
                 Message msg = handler.obtainMessage();
-                msg.what = 1 ;
+                msg.what = Constant.SUCCESS;
                 msg.obj = responseBody;
                 handler.sendMessage(msg);
             }
@@ -58,7 +59,7 @@ public class HttpConnection {
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
                 Message msg = handler.obtainMessage();
-                msg.what = 0 ;
+                msg.what = Constant.FAILED ;
                 msg.obj = null;
                 handler.sendMessage(msg);
             }

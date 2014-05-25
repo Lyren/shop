@@ -2,19 +2,27 @@ package org.tmp.shopclient.ui.fragments;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.loopj.android.http.ResponseHandlerInterface;
 
 import org.tmp.shopclient.R;
+import org.tmp.shopclient.http.HttpConnection;
 import org.tmp.shopclient.ui.adapter.OrderAdapter;
 import org.tmp.shopclient.pulltorefresh.extras.SoundPullEventListener;
 import org.tmp.shopclient.pulltorefresh.library.PullToRefreshBase;
 import org.tmp.shopclient.pulltorefresh.library.PullToRefreshListView;
+import org.tmp.shopclient.utils.Constant;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +33,9 @@ public class DealingOrderFragment extends Fragment {
     private PullToRefreshListView mPullRefreshListView;
     private OrderAdapter adapter;
     private ArrayList<Map<String, Object>> infoList;
+
+    private HttpConnection httpConnection = HttpConnection.getInstance();
+    private static MainHandler handler ;
     public DealingOrderFragment() {
         // Required empty public constructor
     }
@@ -34,6 +45,7 @@ public class DealingOrderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dealing_order, container, false);
+        handler = new MainHandler(this);
 
         mPullRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
 
@@ -49,7 +61,9 @@ public class DealingOrderFragment extends Fragment {
                 refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
 
                 // Do work to refresh the list here.
-                new GetDataTask().execute();
+                //new GetDataTask().execute();
+                ResponseHandlerInterface response = httpConnection.getResponseHandler();
+                httpConnection.executeSample(getActivity(),handler,"http://www.baidu.com",null,response);
             }
         });
         // Add an end-of-list listener
@@ -58,7 +72,7 @@ public class DealingOrderFragment extends Fragment {
             @Override
             public void onLastItemVisible() {
 
-                new GetDataTask().execute();
+                //new GetDataTask().execute();
             }
         });
         ListView actualListView = mPullRefreshListView.getRefreshableView();
@@ -84,37 +98,6 @@ public class DealingOrderFragment extends Fragment {
         return view;
     }
 
-    private class GetDataTask extends AsyncTask<Void, Void, String[]> {
-
-        @Override
-        protected String[] doInBackground(Void... params) {
-            // Simulates a background job.
-            try {
-                Thread.sleep(4000);
-            } catch (InterruptedException e) {
-            }
-            return new String[]{};
-        }
-
-        @Override
-        protected void onPostExecute(String[] result) {
-
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("address", "大连理工大学软件学院  小三炮" );
-            map.put("price", "￥20" );
-            map.put("phone", "18888888888" );
-            map.put("date", "2014/5/5" );
-            map.put("time", "17:00 下单" );
-            infoList.add(map);
-            adapter.notifyDataSetChanged();
-
-            // Call onRefreshComplete when the list has been refreshed.
-            mPullRefreshListView.onRefreshComplete();
-
-            super.onPostExecute(result);
-        }
-    }
-
     private void initData() {
         infoList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < 10; i++) {
@@ -127,6 +110,26 @@ public class DealingOrderFragment extends Fragment {
             infoList.add(map);
         }
     }
+    private static  class MainHandler extends Handler {
+        private WeakReference<DealingOrderFragment> mOut ;
+        public MainHandler(DealingOrderFragment f){
+            mOut = new WeakReference<DealingOrderFragment>(f);
+        }
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == Constant.SUCCESS){
+                String result = (String) msg.obj;
+                System.out.println(result);
+                Toast.makeText(mOut.get().getActivity(), result, Toast.LENGTH_LONG).show();
+            }else if (msg.what == Constant.FAILED){
+                Toast.makeText(mOut.get().getActivity(), "get data failed", Toast.LENGTH_LONG).show();
+            }else {
 
+            }
+            // Call onRefreshComplete when the list has been refreshed.
+            mOut.get().mPullRefreshListView.onRefreshComplete();
+        }
+    }
 
 }
