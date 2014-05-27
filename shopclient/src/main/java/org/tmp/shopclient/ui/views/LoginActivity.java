@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.tmp.shopclient.R;
@@ -25,15 +26,16 @@ public class LoginActivity extends RoboActivity implements OnClickListener{
 	@InjectView(R.id.cb_rememberPwd) CheckBox rememberPwd ;
 	@InjectView(R.id.cb_autoLogin) CheckBox autoLogin ;
 	@InjectView(R.id.btn_login) Button login ;
+    @InjectView(R.id.btn_forgetPwd)
+    TextView forgetPwd ;
 
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login_activity_layout);
-		ActionBar actionBar = this.getActionBar() ;
-		actionBar.setTitle(getResources().getString(R.string.shopLogin));
 		login.setOnClickListener(this);
+        this.forgetPwd.setOnClickListener(this);
 	}
 
 	
@@ -53,9 +55,11 @@ public class LoginActivity extends RoboActivity implements OnClickListener{
 		case R.id.btn_login:
             Intent intent = new Intent(LoginActivity.this,ShopMainActivity.class);
             startActivity(intent);
-			//Toast.makeText(LoginActivity.this, "login", Toast.LENGTH_SHORT).show();
 			break;
-
+            case R.id.btn_forgetPwd:
+                Intent forgetPwdintent = new Intent(LoginActivity.this,FindPwdActivity1.class);
+                startActivity(forgetPwdintent);
+                break;
 		default:
 			break;
 		}

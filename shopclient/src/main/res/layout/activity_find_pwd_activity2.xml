@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ensure"
-        android:id="@+id/btn_ensure"
+        android:id="@+id/btn_change_ensure"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="113dp"
@@ -62,8 +62,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cancel"
-        android:id="@+id/btn_cancel"
-        android:layout_alignTop="@+id/btn_ensure"
+        android:id="@+id/btn_change_cancel"
+        android:layout_alignTop="@+id/btn_change_ensure"
         android:layout_alignRight="@+id/et_find_re_new_pwd"
         android:layout_alignEnd="@+id/et_find_re_new_pwd" />
 </RelativeLayout>

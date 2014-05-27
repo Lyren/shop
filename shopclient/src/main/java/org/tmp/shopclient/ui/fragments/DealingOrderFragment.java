@@ -1,5 +1,6 @@
 package org.tmp.shopclient.ui.fragments;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +10,7 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -20,6 +22,7 @@ import org.tmp.shopclient.ui.adapter.OrderAdapter;
 import org.tmp.shopclient.pulltorefresh.extras.SoundPullEventListener;
 import org.tmp.shopclient.pulltorefresh.library.PullToRefreshBase;
 import org.tmp.shopclient.pulltorefresh.library.PullToRefreshListView;
+import org.tmp.shopclient.ui.views.OrderDetailActivity;
 import org.tmp.shopclient.utils.Constant;
 
 import java.lang.ref.WeakReference;
@@ -76,7 +79,16 @@ public class DealingOrderFragment extends Fragment {
             }
         });
         ListView actualListView = mPullRefreshListView.getRefreshableView();
-
+        //set setOnItemClickListener
+        mPullRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Map<String,Object> selectedItem = infoList.get(position);
+                Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
+                intent.putExtra("data",(String)selectedItem.get("time"));
+                startActivity(intent);
+            }
+        });
         // Need to use the Actual ListView when registering for Context Menu
         registerForContextMenu(actualListView);
 

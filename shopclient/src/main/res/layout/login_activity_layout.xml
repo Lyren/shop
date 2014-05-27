@@ -18,14 +18,24 @@
             android:id="@+id/tv_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingRight="16dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="18sp"
+            android:textColor="#b1a492"
             android:text="@string/account" />
 
         <EditText
             android:id="@+id/et_account"
-            android:layout_width="wrap_content"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:hint="@string/accountHint"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="18sp"
+            android:textColor="#b1a492"/>
     </LinearLayout>
 
     <LinearLayout
@@ -37,44 +47,68 @@
             android:id="@+id/tv_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingRight="16dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="18sp"
+            android:textColor="#b1a492"
             android:text="@string/password" />
 
         <EditText
             android:id="@+id/et_password"
-            android:layout_width="wrap_content"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:hint="@string/passwordHint"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="18sp"
+            android:textColor="#b1a492" />
     </LinearLayout>
 
-    <Button
+    <TextView
         android:id="@+id/btn_forgetPwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/forgetPassword" />
+        android:text="@string/forgetPassword"
+        android:padding="8dp"
+        android:textSize="18sp"
+        android:layout_gravity="right"
+        android:linksClickable="false" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_height="wrap_content" >
 
         <CheckBox
             android:id="@+id/cb_rememberPwd"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/rememberPwd" />
+            android:layout_height="48dp"
+            android:text="@string/rememberPwd"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp" />
 
         <CheckBox
             android:id="@+id/cb_autoLogin"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/autoLogin" />
-    </LinearLayout>
+            android:layout_height="48dp"
+            android:text="@string/autoLogin"
+            android:textSize="18sp"
+            android:layout_toRightOf="@+id/cb_rememberPwd"
+            android:layout_marginLeft="48dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp" />
+    </RelativeLayout>
     
     <Button
         android:id="@+id/btn_login"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login" />
+        android:text="@string/login"
+        android:background="#de3123"
+        android:layout_marginTop="28dp" />
 
 </LinearLayout>
